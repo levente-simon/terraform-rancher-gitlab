@@ -1,0 +1,45 @@
+global:
+  edition: ee
+  hosts:
+    domain: %s
+  ingress:
+    annotations: 
+      cert-manager.io/cluster-issuer: vault-issuer
+    apiVersion: ''
+    configureCertmanager: false
+    enabled: true
+    path: /
+    pathType: Prefix
+    provider: nginx
+    tls: 
+      enabled: true
+      secretName: gitlab-tls
+  appConfig:
+%s
+%s
+registry:
+  ingress:
+    annotations: 
+      cert-manager.io/cluster-issuer: vault-issuer
+    tls:
+      secretName: gitlab-registry-tls
+minio:
+  ingress:
+    annotations: 
+      cert-manager.io/cluster-issuer: vault-issuer
+    tls:
+      secretName: gitlab-minio-tls
+gitlab:
+  webservice:
+    ingress:
+      annotations: 
+        cert-manager.io/cluster-issuer: vault-issuer
+      tls:
+        secretName: gitlab-gitlab-tls 
+gitlab-runner:
+  install: false
+certmanager:
+  install: false
+postgresql:
+  install: %s
+
