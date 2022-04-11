@@ -44,6 +44,7 @@ variable "external_psql" {
 
 variable "psql_host" {
   type    = string
+  default = ""
 }
 
 variable "psql_port" {
