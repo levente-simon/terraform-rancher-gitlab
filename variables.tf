@@ -64,5 +64,6 @@ variable "psql_user" {
 
 variable "psql_password" {
   type    = string
+  default = "insecure"
 }
 
